@@ -1,0 +1,98 @@
+import entidades.Filme;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        ArrayList<Filme> filmes = new ArrayList<>();
+
+        while (true) {
+            System.out.println("1 - CADASTRAR FILME");
+            System.out.println("2 - LISTAR FILMES");
+            System.out.println("3 - ATUALIZAR FILMES");
+            System.out.println("4 - EXCLUIR FILMES");
+            System.out.println("5 - SAIR DO PROGRAMA");
+            System.out.print("DIGITE UMA OPÇÃO: ");
+            String opcao = sc.nextLine();
+
+            switch (opcao) {
+                case "1":
+                    System.out.println("DIGITE O TÍTULO DO FILME: ");
+                    String titulo = sc.nextLine();
+
+                    System.out.println("DIGITE O GÊNERO DO FILME: ");
+                    String genero = sc.nextLine();
+
+                    System.out.println("DIGITE A INFORMAÇÃO DE CLASSIFICAÇÃO: ");
+                    int classificacao = sc.nextInt();
+
+                    System.out.println("DIGITE A DURAÇÃO DO FILME: ");
+                    int duracao = sc.nextInt();
+                    sc.nextLine();
+
+                    Filme filme = new Filme(titulo, genero, classificacao, duracao);
+                    filmes.add(filme);
+                    break;
+
+                case "2":
+
+                    if (filmes.isEmpty()) {
+                    System.out.println("NENHUM FILME CADASTRADO!");
+                    } else {
+
+                        System.out.println("|  ID  |  TÍTULO  |  GÊNERO  |  DURAÇÃO  |  CLASSIFICAÇÃO  |");
+
+                        for (int i = 0; i < filmes.size(); i++) {
+                            System.out.println("|" + i + "|" + filmes.get(i).toString() + "|");
+                        }
+                    }
+                    break;
+                case "3":
+                    System.out.println("INFORME O ID DO FILME: ");
+                    int idFilme = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.println("DIGITE O TÍTULO DO FILME: ");
+                    String alteraTitulo = sc.nextLine();
+
+                    System.out.println("DIGITE O GÊNERO DO FILME: ");
+                    String alteraGenero = sc.nextLine();
+
+                    System.out.println("DIGITE A INFORMAÇÃO DE CLASSIFICAÇÃO: ");
+                    int alteraClassificacao = sc.nextInt();
+
+                    System.out.println("DIGITE A DURAÇÃO DO FILME: ");
+                    int alteraDuracao = sc.nextInt();
+                    sc.nextLine();
+
+                    var alteraFilme = filmes.get(idFilme);
+
+                    alteraFilme.setTitulo(alteraTitulo);
+                    alteraFilme.setGenero(alteraGenero);
+                    alteraFilme.setClassificacao(alteraClassificacao);
+                    alteraFilme.setDuracao(alteraDuracao);
+
+                    System.out.println("Filme alterado com sucesso!");
+                    break;
+
+                case "4":
+                    System.out.println("INFORME O ID DO FILME: ");
+                    int idRemover = sc.nextInt();
+                    sc.nextLine();
+
+                    filmes.remove(idRemover);
+
+                    System.out.println("Filme removido com sucesso!");
+                    break;
+
+                case "5":
+                    return;
+            }
+        }
+
+    }
+}
