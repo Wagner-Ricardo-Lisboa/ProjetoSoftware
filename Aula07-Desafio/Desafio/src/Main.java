@@ -11,6 +11,7 @@ public class Main {
         ArrayList<Roupa> roupas = new ArrayList<>();
 
         while (true) {
+            System.out.println("===MENU DE OPÇÕES===");
             System.out.println("1 - Registrar Roupas");
             System.out.println("2 - Listar Roupas");
             System.out.println("3 - Atualizar Roupa");
