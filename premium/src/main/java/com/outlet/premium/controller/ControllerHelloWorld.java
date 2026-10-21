@@ -1,4 +1,4 @@
-package controller;
+package com.outlet.premium.controller;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
